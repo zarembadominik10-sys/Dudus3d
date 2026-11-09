@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>dudus3d – sklep z wydrukami 3D i druk na zamówienie</title>
+<meta name="description" content="Sklep dudus3d: gotowe wydruki 3D oraz druk na zamówienie według Twojego pomysłu lub pliku STL. Materiały PLA, PETG, TPU. Szybka wysyłka.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Store","name":"dudus3d","description":"Wydruki 3D i druk na zamówienie","priceRange":"12-60 PLN","makesOffer":[
+{"@type":"Offer","priceCurrency":"PLN","price":"29","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Organizer na biurko"}},
+{"@type":"Offer","priceCurrency":"PLN","price":"35","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Uchwyt na słuchawki"}},
+{"@type":"Offer","priceCurrency":"PLN","price":"24","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Doniczka geometryczna"}},
+{"@type":"Offer","priceCurrency":"PLN","price":"12","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Brelok z imieniem"}},
+{"@type":"Offer","priceCurrency":"PLN","price":"22","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Podstawka pod telefon"}},
+{"@type":"Offer","priceCurrency":"PLN","price":"39","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Smok przegubowy"}}]}
+</script>
+<style>
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --ink:#1b2430; --muted:#5b6674; --blue:#2f5bff; --pink:#ff4fa3; --line:#d5dbe3; --on-blue:#ffffff;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#12171f; --surface:#1b2330; --ink:#eef2f7; --muted:#9aa6b5; --blue:#7b97ff; --pink:#ff7bb9; --line:#2c3748; --on-blue:#0d1220;}
+}
+:root[data-theme="dark"]{--bg:#12171f; --surface:#1b2330; --ink:#eef2f7; --muted:#9aa6b5; --blue:#7b97ff; --pink:#ff7bb9; --line:#2c3748; --on-blue:#0d1220;}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.logo{font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--blue)}
+nav{display:flex;align-items:center;gap:16px}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--blue)}
+.cartbtn{font:inherit;font-weight:700;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.hero{display:grid;gap:24px;align-items:center;padding:36px 0 40px}
+@media(min-width:780px){.hero{grid-template-columns:1.2fr .8fr}}
+h1{font-size:clamp(2.2rem,7vw,3.8rem);line-height:1;margin:0 0 14px;letter-spacing:-.03em}
+.lead{color:var(--muted);max-width:44ch;margin:0 0 22px;font-size:1.05rem}
+.btn{display:inline-block;font:inherit;font-weight:700;background:var(--blue);color:var(--on-blue);border:0;border-radius:12px;padding:13px 22px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-left:8px}
+.vase{height:300px;display:flex;flex-direction:column-reverse;align-items:center;gap:1px;padding-bottom:6px}
+.vase span{display:block;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--pink));opacity:0;transform:scaleX(.2)}
+.vase.go span{opacity:1;transform:none;transition:opacity .25s,transform .25s}
+h2{font-size:1.8rem;margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 22px}
+section{padding:28px 0}
+.trust{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));padding:0 0 12px}
+.trust div{border-left:4px solid var(--blue);padding:2px 0 2px 12px;font-size:.92rem;color:var(--muted)}
+.trust div:nth-child(even){border-color:var(--pink)}
+.trust b{display:block;color:var(--ink)}
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:140px;display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.obj{width:80px;height:80px;background:repeating-linear-gradient(0deg,var(--c) 0 4px,color-mix(in srgb,var(--c) 70%,#000) 4px 5px)}
+.card .b{padding:14px;display:grid;gap:6px;flex:1;align-content:start}
+.card h3{margin:0;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.foot b{font-size:1.15rem}
+.card button{font:inherit;font-weight:600;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;cursor:pointer}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:12px}
+.cfg{display:grid;gap:18px}
+@media(min-width:780px){.cfg{grid-template-columns:1.3fr .7fr;align-items:start}}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+label{display:grid;gap:4px;font-size:.9rem;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px;width:100%}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.swatches label{display:block;position:relative}
+.swatches input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.swatches span{display:block;width:34px;height:34px;border-radius:50%;background:var(--c);border:2px solid var(--line)}
+.swatches input:checked+span{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}
+.swatches input:focus-visible+span{outline:3px solid var(--blue);outline-offset:3px}
+.est{text-align:center}
+.est .n{font-size:2.4rem;font-weight:700;letter-spacing:-.02em}
+.est small{color:var(--muted);display:block}
+.err{color:#d23b3b;min-height:1.2em;margin:0;font-size:.9rem}
+/* cart */
+#shade{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:40}
+#cart{position:fixed;z-index:50;right:0;top:0;bottom:0;width:min(420px,100%);background:var(--bg);border-left:1px solid var(--line);padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(100%);transition:transform .25s;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+#cart.open{transform:none}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.line small{color:var(--muted);grid-column:1/-1}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.tot{display:flex;justify-content:space-between;font-weight:700}
+#ok{display:none}
+footer{padding:30px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);margin-top:20px}
+@media (prefers-reduced-motion:reduce){.vase span,#cart{transition:none}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+  <div class="logo">dudus<i>3d</i></div>
+  <nav><a href="#oferta">Sklep</a><a href="#zamowienie">Na zamówienie</a><button class="cartbtn" id="open" type="button">Koszyk (<span id="cnt">0</span>)</button></nav>
+</div></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Wydruki 3D warstwa po warstwie.</h1>
+      <p class="lead">Gotowe produkty z magazynu i druk na zamówienie. Wybierz model, kolor i materiał, a cenę zobaczysz od razu.</p>
+      <a class="btn" href="#oferta">Przeglądaj sklep</a><a class="btn ghost" href="#zamowienie">Zamów własny druk</a>
+    </div>
+    <div class="vase" id="vase" aria-hidden="true"></div>
+  </div>
+
+  <div class="trust">
+    <div><b>Wysyłka w 1 do 3 dni</b>Gotowe produkty od ręki</div>
+    <div><b>Druk na zamówienie</b>2 do 5 dni roboczych</div>
+    <div><b>Kontrola jakości</b>Każdy wydruk sprawdzany ręcznie</div>
+    <div><b>14 dni na zwrot</b>Dla produktów gotowych</div>
+  </div>
+
+  <section id="oferta">
+    <h2>Gotowe wydruki</h2>
+    <p class="sub">Przykładowa oferta. Ceny i opisy podmienisz na swoje.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="zamowienie">
+    <h2>Rzeczy na zamówienie</h2>
+    <p class="sub">Skonfiguruj wydruk. Cena jest orientacyjna, ostateczną potwierdzę po obejrzeniu projektu.</p>
+    <div class="cfg">
+      <div class="panel">
+        <div class="row">
+          <label>Co drukujemy<select id="ctype">
+            <option value="25">Przegródka, organizer</option>
+            <option value="18">Brelok, zawieszka</option>
+            <option value="35">Obudowa, uchwyt</option>
+            <option value="30">Figurka, dekoracja</option>
+            <option value="40">Własny projekt (plik STL)</option>
+          </select></label>
+          <label>Materiał<select id="cmat">
+            <option value="1">PLA (standard)</option>
+            <option value="1.25">PETG (wytrzymały)</option>
+            <option value="1.6">TPU (elastyczny)</option>
+          </select></label>
+        </div>
+        <div class="row">
+          <label>Rozmiar<select id="csize">
+            <option value="1">Mały (do 6 cm)</option>
+            <option value="1.6">Średni (do 12 cm)</option>
+            <option value="2.6">Duży (do 20 cm)</option>
+          </select></label>
+          <label>Ilość<input type="number" id="cq" min="1" max="100" value="1"></label>
+        </div>
+        <label>Kolor
+          <div class="swatches" role="radiogroup" aria-label="Kolor">
+            <label><input type="radio" name="col" value="Biały" checked><span style="--c:#f4f4f4"></span></label>
+            <label><input type="radio" name="col" value="Czarny"><span style="--c:#222"></span></label>
+            <label><input type="radio" name="col" value="Niebieski"><span style="--c:#2f5bff"></span></label>
+            <label><input type="radio" name="col" value="Różowy"><span style="--c:#ff4fa3"></span></label>
+            <label><input type="radio" name="col" value="Zielony"><span style="--c:#1fa97a"></span></label>
+            <label><input type="radio" name="col" value="Pomarańczowy"><span style="--c:#f0a31c"></span></label>
+            <label><input type="radio" name="col" value="Czerwony"><span style="--c:#e2483d"></span></label>
+          </div>
+        </label>
+        <label>Opis, wymiary, link do pliku STL<textarea id="cd" rows="3" placeholder="Np. 3 przegródki, wymiary 20×10 cm, napis „Kuchnia”"></textarea></label>
+      </div>
+      <div class="panel est">
+        <small>Cena orientacyjna</small>
+        <div class="n" id="est">25 zł</div>
+        <small id="estd">za 1 szt.</small>
+        <button class="btn" id="addc" type="button">Dodaj do koszyka</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>© dudus3d. Strona demonstracyjna: zamówienia nie są jeszcze wysyłane ani opłacane. Poniżej w koszyku znajdziesz pełny proces zakupu.</footer>
+</div>
+
+<div id="shade"></div>
+<aside id="cart" aria-label="Koszyk">
+  <div class="tot"><span style="font-size:1.3rem">Koszyk</span><button class="cartbtn" id="close" type="button">Zamknij</button></div>
+  <div id="lines"></div>
+  <div id="co">
+    <label>Dostawa<select id="ship">
+      <option value="14">Paczkomat – 14 zł</option>
+      <option value="18">Kurier – 18 zł</option>
+      <option value="0">Odbiór osobisty – 0 zł</option>
+    </select></label>
+    <div class="tot" style="margin:12px 0"><span>Razem</span><span id="total">0 zł</span></div>
+    <form id="f" novalidate class="panel">
+      <label>Imię i nazwisko<input type="text" id="n" autocomplete="name"></label>
+      <label>E-mail<input type="email" id="m" autocomplete="email"></label>
+      <label>Telefon<input type="text" id="t" autocomplete="tel"></label>
+      <label>Adres lub numer paczkomatu<input type="text" id="a" autocomplete="street-address"></label>
+      <p class="err" id="e" role="alert"></p>
+      <button class="btn" type="submit">Złóż zamówienie</button>
+    </form>
+  </div>
+  <div id="ok" class="panel" role="status"><b>Zamówienie przyjęte.</b><span id="okm"></span></div>
+</aside>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  /* printed vase */
+  var vase=$('vase'),N=42,i,s,t,w;
+  for(i=0;i<N;i++){s=document.createElement('span');t=i/(N-1);
+    w=70+36*Math.sin(t*Math.PI*1.6+.5)*(1-t*.35)+(t<.08?-20:0);
+    s.style.width=Math.max(40,w)+'px';s.style.transitionDelay=(i*45)+'ms';vase.appendChild(s)}
+  requestAnimationFrame(function(){setTimeout(function(){vase.classList.add('go')},150)});
+
+  /* products */
+  var items=[
+    {id:'p1',n:'Organizer na biurko',d:'Trzy przegródki na długopisy i drobiazgi.',p:29,c:'#2f5bff',r:'12px'},
+    {id:'p2',n:'Uchwyt na słuchawki',d:'Stabilna podstawa, pasuje do większości modeli.',p:35,c:'#ff4fa3',r:'50% 50% 10px 10px'},
+    {id:'p3',n:'Doniczka geometryczna',d:'Z otworem na odpływ wody, średnica 10 cm.',p:24,c:'#1fa97a',r:'50%'},
+    {id:'p4',n:'Brelok z imieniem',d:'Podaj imię i kolor w uwagach do zamówienia.',p:12,c:'#f0a31c',r:'24px 4px'},
+    {id:'p5',n:'Podstawka pod telefon',d:'Regulowany kąt, antypoślizgowe nóżki.',p:22,c:'#8a5cf5',r:'8px 40px'},
+    {id:'p6',n:'Smok przegubowy',d:'Ruchomy, drukowany w jednym kawałku.',p:39,c:'#e2483d',r:'40% 10% 40% 10%'}
+  ];
+  var box=$('cards');
+  items.forEach(function(it){
+    var c=document.createElement('article');c.className='card';
+    c.innerHTML='<div class="thumb"><div class="obj" style="--c:'+it.c+';border-radius:'+it.r+'"></div></div>'+
+      '<div class="b"><h3>'+it.n+'</h3><p>'+it.d+'</p><div class="foot"><b>'+it.p+' zł</b><button type="button">Do koszyka</button></div></div>';
+    c.querySelector('button').addEventListener('click',function(){add(it.id,it.n,it.p,'')});
+    box.appendChild(c);
+  });
+
+  /* configurator */
+  function est(){
+    var base=+$('ctype').value,m=+$('cmat').value,sz=+$('csize').value,q=Math.max(1,+$('cq').value||1);
+    var unit=Math.round(base*m*sz*(q>=10?.85:q>=5?.92:1));
+    return {unit:unit,q:q};
+  }
+  function showEst(){var e=est();$('est').textContent=e.unit+' zł';$('estd').textContent='za 1 szt.'+(e.q>1?' (razem '+e.unit*e.q+' zł)':'')}
+  ['ctype','cmat','csize','cq'].forEach(function(id){$(id).addEventListener('input',showEst)});
+  showEst();
+  $('addc').addEventListener('click',function(){
+    var e=est(),col=document.querySelector('input[name=col]:checked').value,
+        tx=$('ctype').options[$('ctype').selectedIndex].text,
+        det=$('cmat').options[$('cmat').selectedIndex].text.split(' ')[0]+', '+$('csize').options[$('csize').selectedIndex].text+', '+col+($('cd').value.trim()?'. '+$('cd').value.trim():'');
+    add('c'+Date.now(),'Na zamówienie: '+tx,e.unit,det,e.q);
+  });
+
+  /* cart */
+  var cart=[];
+  function add(id,n,p,note,q){
+    var f=cart.filter(function(x){return x.id===id&&!note})[0];
+    if(f){f.q+=q||1}else{cart.push({id:id,n:n,p:p,note:note,q:q||1})}
+    render();openCart();
+  }
+  function render(){
+    var L=$('lines'),sum=0,cnt=0;L.innerHTML='';
+    if(!cart.length){L.innerHTML='<p class="sub">Koszyk jest pusty. Dodaj coś ze sklepu.</p>'}
+    cart.forEach(function(x,k){
+      sum+=x.p*x.q;cnt+=x.q;
+      var d=document.createElement('div');d.className='line';
+      d.innerHTML='<b></b><span>'+(x.p*x.q)+' zł</span><small></small>';
+      d.querySelector('b').textContent=x.n;
+      d.querySelector('small').textContent=x.note;
+      var q=document.createElement('div');q.className='qty';
+      q.innerHTML='<button type="button" aria-label="Mniej">−</button><span>'+x.q+'</span><button type="button" aria-label="Więcej">+</button>';
+      q.children[0].onclick=function(){x.q--;if(x.q<1)cart.splice(k,1);render()};
+      q.children[2].onclick=function(){x.q++;render()};
+      d.appendChild(q);L.appendChild(d);
+    });
+    $('cnt').textContent=cnt;
+    $('co').style.display=cart.length?'block':'none';
+    $('total').textContent=(sum+(cart.length?+$('ship').value:0))+' zł';
+  }
+  $('ship').addEventListener('change',render);
+  function openCart(){$('cart').classList.add('open');$('shade').style.display='block'}
+  function closeCart(){$('cart').classList.remove('open');$('shade').style.display='none'}
+  $('open').onclick=openCart;$('close').onclick=closeCart;$('shade').onclick=closeCart;
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCart()});
+
+  $('f').addEventListener('submit',function(ev){
+    ev.preventDefault();var e=$('e');
+    if(!$('n').value.trim()||!$('a').value.trim()){e.textContent='Podaj imię i adres dostawy.';return}
+    if(!/^\S+@\S+\.\S+$/.test($('m').value.trim())){e.textContent='Podaj poprawny adres e-mail.';return}
+    e.textContent='';
+    $('okm').textContent=' Dziękuję, '+$('n').value.trim()+'. Potwierdzenie i dane do płatności wyślę na '+$('m').value.trim()+'.';
+    $('lines').style.display='none';$('co').style.display='none';$('ok').style.display='grid';
+    cart=[];$('cnt').textContent=0;
+  });
+  render();
+})();
+</script>
+</body>
+</html>
